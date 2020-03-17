@@ -14,6 +14,21 @@ BOT_NAME = 'scrap_concerts'
 SPIDER_MODULES = ['scrap_concerts.spiders']
 NEWSPIDER_MODULE = 'scrap_concerts.spiders'
 
+from scrapy.exporters import JsonLinesItemExporter, JsonItemExporter
+
+class MyJsonLinesItemExporter(JsonLinesItemExporter):
+    def __init__(self, file, **kwargs):
+        super(MyJsonLinesItemExporter, self).__init__(file, ensure_ascii=False, **kwargs)
+
+class MyJsonItemExporter(JsonItemExporter):
+    def __init__(self, file, **kwargs):
+        super(MyJsonItemExporter, self).__init__(file, ensure_ascii=False, **kwargs)
+
+FEED_EXPORTERS = {
+    'json': 'scrap_concerts.settings.MyJsonItemExporter',
+    'jsonlines': 'scrap_concerts.settings.MyJsonLinesItemExporter',
+    'jl': 'scrap_concerts.settings.MyJsonLinesItemExporter',
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrap_concerts (+http://www.yourdomain.com)'
