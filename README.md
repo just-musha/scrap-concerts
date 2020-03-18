@@ -9,6 +9,14 @@ Scraps the following data:
 - description
 - image
 
+#### How to use
+
+```$ scrapy crawl <SPIDER_NAME>```
+
+Example:
+
+```$ scrapy crawl glavclub```
+
 #### Results
 Result JSON file is located at ```~/scrap-concert-results``` dir.
 
