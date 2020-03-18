@@ -12,4 +12,5 @@ class ScrapConcertsItem(scrapy.Item):
     date = scrapy.Field()
     name = scrapy.Field()
     description = scrapy.Field()
-    picture_link = scrapy.Field()
+    image_urls = scrapy.Field()
+    images = scrapy.Field()
