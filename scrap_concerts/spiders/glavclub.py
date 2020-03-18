@@ -2,6 +2,7 @@
 import scrapy
 import json
 
+from os.path import join, expanduser
 from scrap_concerts.items import ScrapConcertsItem
 
 class GlavclubSpider(scrapy.Spider):
@@ -12,7 +13,7 @@ class GlavclubSpider(scrapy.Spider):
     # Enable Feed Storage
     custom_settings = {
         'FEED_FORMAT': 'json',
-        'FEED_URI': 'file:///tmp/%(time)s.json'
+        'FEED_URI': join(expanduser('~'), "scrap-concert-results", "%(time)s.json")
     }
 
     def parse(self, response):

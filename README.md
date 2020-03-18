@@ -10,6 +10,6 @@ Scraps the following data:
 - image
 
 #### Results
-Result JSON file is located at ```/tmp``` dir.
+Result JSON file is located at ```~/scrap-concert-results``` dir.
 
-Images are downloaded into ```<HOMEDIR>/full``` directory.
+Images are downloaded into ```~/scrap-concert-results/full``` directory.

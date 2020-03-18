@@ -83,9 +83,9 @@ ITEM_PIPELINES = {
    'scrapy.pipelines.images.ImagesPipeline': 1,
 }
 
-from os.path import expanduser
+from os.path import join, expanduser
 
-IMAGES_STORE = expanduser("~")
+IMAGES_STORE = join(expanduser("~"), "scrap-concert-results")
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
