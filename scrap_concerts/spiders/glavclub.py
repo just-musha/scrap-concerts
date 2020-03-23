@@ -17,7 +17,7 @@ class GlavclubSpider(scrapy.Spider):
     }
 
     def parse(self, response):
-        for one in response.xpath('//main//script["application/ld+json"]/text()').getall():
+        for one in response.css(".posters-block script[type='application/ld+json'] ::text").extract():
             one_json = json.loads(one)
 
             url = one_json["url"]
@@ -31,10 +31,10 @@ class GlavclubSpider(scrapy.Spider):
         item = response.meta['item']
         print('item = ', item)
 
-        desc = response.xpath("/html/body/div['wrapper']/main/div['event-description-holder']/div['container']/div['readable-column']/div['event-description-text']/p/text()").extract()
+        desc = response.css(".event-description-text").extract()
         item['description'] = desc
 
-        short_url = response.xpath("/html/body/div['wrapper']/main/div['event-main-info-holder']/div['container']/div['event-info-holder-image-big']/img/@src").extract_first()
+        short_url = response.css(".event-info-holder-image-big > img::attr(src)").extract_first()
         url = "https://" + self.allowed_domains[0] + short_url
 
         item['image_urls'] = [url]
